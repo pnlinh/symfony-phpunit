@@ -26,4 +26,28 @@ class DinoSaurTest extends TestCase
 
         $this->assertGreaterThan(12, $dinosaur->getLength());
     }
+    
+    /** @test */
+    public function returns_full_specification_of_dinosaur()
+    {
+        $dinosaur = new Dinosaur();
+
+        $this->assertSame(
+            'The Unknown non-carnivorous dinosaur is 0 meters long',
+            $dinosaur->getSpecification()
+        );
+    }
+
+    /** @test */
+    public function returns_full_specification_for_tyrannosaurus()
+    {
+        $dinosaur = new Dinosaur('Tyrannosaurus', true);
+
+        $dinosaur->setLength(12);
+
+        $this->assertSame(
+            'The Tyrannosaurus carnivorous dinosaur is 12 meters long',
+            $dinosaur->getSpecification()
+        );
+    }
 }
